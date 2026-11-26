@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${APP_PORT:-3000}:80"
+    volumes:
+      - ./dist:/usr/local/apache2/htdocs:ro
+    init: true

@@ -1,0 +1,120 @@
+<main id="main">
+  <section class="project-hero" aria-labelledby="project-title">
+    <p class="project-breadcrumb reveal"><a href="<?php echo esc_url(home_url('/')); ?>">Portfolio</a><span>/</span>Selected Works 02</p>
+    <div class="project-hero-grid">
+      <div class="reveal">
+        <p class="project-label">Sample Project / Web Application</p>
+        <h1 class="project-title" id="project-title">お問い合わせ<br />管理アプリ<small>Inquiry Management Application</small></h1>
+      </div>
+      <div class="project-summary-wrap reveal">
+        <p class="project-summary">Webフォームから届く問い合わせを一元管理し、対応状況の可視化とNotionへの連携で、確認漏れを減らす小規模業務アプリです。</p>
+        <span class="project-status"><i aria-hidden="true"></i>Specification Prototype</span>
+      </div>
+    </div>
+    <dl class="project-meta reveal">
+      <div><dt>制作区分</dt><dd>自主制作サンプル</dd></div>
+      <div><dt>担当範囲</dt><dd>設計・DB・実装</dd></div>
+      <div><dt>想定期間</dt><dd>3〜5週間</dd></div>
+      <div><dt>ステータス</dt><dd>要件・UI設計</dd></div>
+    </dl>
+  </section>
+
+  <div class="project-showcase-wrap">
+    <div class="work-visual app-mockup project-showcase reveal" aria-label="お問い合わせ管理アプリの画面イメージ">
+      <div class="app-sidebar"><b>inbox.</b><i></i><i></i><i></i><i></i></div>
+      <div class="app-main">
+        <div class="app-top"><span>お問い合わせ</span><b>12件</b></div>
+        <div class="app-table-head"><span>送信者</span><span>種別</span><span>状態</span></div>
+        <div class="app-row"><i></i><span>山田 太郎</span><small>制作相談</small><b>未対応</b></div>
+        <div class="app-row"><i></i><span>佐藤 花子</span><small>保守依頼</small><b>対応中</b></div>
+        <div class="app-row"><i></i><span>鈴木 一郎</span><small>更新依頼</small><b>完了</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-main">
+    <div class="project-layout">
+      <aside class="project-toc reveal" aria-label="ページ内目次">
+        <p>Contents</p>
+        <ol>
+          <li><a href="#overview"><span>01</span>概要</a></li>
+          <li><a href="#requirements"><span>02</span>想定要件</a></li>
+          <li><a href="#flow"><span>03</span>処理構成</a></li>
+          <li><a href="#data"><span>04</span>データ設計</a></li>
+          <li><a href="#implementation"><span>05</span>実装方針</a></li>
+        </ol>
+      </aside>
+
+      <div class="project-body">
+        <section class="content-block reveal" id="overview">
+          <p class="content-kicker">01 / Overview</p>
+          <h2>問い合わせ対応を、<br />個人の記憶に頼らない。</h2>
+          <p class="content-lead">メールや複数のフォームに分散する問い合わせを一つの画面に集約し、「誰が・どこまで対応したか」を共有できる管理アプリです。</p>
+          <p>PHP・JavaScript・MySQLを使った実務経験と、フォーム情報をNotionへ登録するAPI連携の経験をもとに、公開可能な自主制作サンプルとして設計します。</p>
+          <p class="project-notice">このページは自主制作サンプルの設計内容です。画面内の氏名・問い合わせ内容はすべて架空です。</p>
+        </section>
+
+        <section class="content-block reveal" id="requirements">
+          <p class="content-kicker">02 / Requirements</p>
+          <h2>想定する課題と機能</h2>
+          <div class="challenge-grid">
+            <article class="challenge-card"><span>01</span><h3>確認漏れが起きる</h3><p>フォーム受信時にデータベースへ保存し、未対応の問い合わせを一覧の先頭に表示します。</p></article>
+            <article class="challenge-card"><span>02</span><h3>対応状況が共有できない</h3><p>未対応・対応中・完了の状態と担当メモを記録し、チーム内で共有します。</p></article>
+            <article class="challenge-card"><span>03</span><h3>転記作業が発生する</h3><p>登録後にNotion APIへ連携し、既存の業務管理フローにも情報を渡します。</p></article>
+          </div>
+          <ul class="stack-list" aria-label="想定技術"><li>PHP</li><li>JavaScript</li><li>fetch / Ajax</li><li>MySQL</li><li>Notion API</li><li>Docker</li><li>Apache</li><li>Git</li></ul>
+        </section>
+
+        <section class="content-block reveal" id="flow">
+          <p class="content-kicker">03 / Application Flow</p>
+          <h2>処理構成</h2>
+          <p>ブラウザ側はfetchでPHPのAPIへ送信し、サーバー側で検証・保存した後に外部サービスへ連携します。外部連携に失敗しても問い合わせ自体は失わない設計にします。</p>
+          <div class="architecture-flow" role="img" aria-label="問い合わせフォームからPHP API、MySQL、Notion APIとメール通知へつながる処理構成">
+            <div class="flow-node"><span>FRONTEND</span><b>問い合わせフォーム<br />管理画面</b></div>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="flow-node"><span>BACKEND</span><b>PHP API<br />入力検証・制御</b></div>
+            <span class="flow-arrow" aria-hidden="true">→</span>
+            <div class="flow-branches"><div class="flow-node"><span>DATABASE</span><b>MySQL</b></div><div class="flow-node"><span>EXTERNAL</span><b>Notion / Mail</b></div></div>
+          </div>
+        </section>
+
+        <section class="content-block reveal" id="data">
+          <p class="content-kicker">04 / Data Design</p>
+          <h2>主なデータ項目</h2>
+          <p>問い合わせ内容、対応状態、外部連携結果を一つのレコードで追跡できる最小構成です。</p>
+          <div class="table-scroll">
+            <table class="data-table">
+              <thead><tr><th>カラム</th><th>内容</th><th>用途</th></tr></thead>
+              <tbody>
+                <tr><td>id</td><td>問い合わせID</td><td>レコードの一意な識別</td></tr>
+                <tr><td>name / email</td><td>送信者情報</td><td>返信・確認</td></tr>
+                <tr><td>category / message</td><td>種別・本文</td><td>内容の分類と表示</td></tr>
+                <tr><td>status</td><td>未対応・対応中・完了</td><td>進捗管理</td></tr>
+                <tr><td>notion_page_id</td><td>Notion側ページID</td><td>連携状況の追跡</td></tr>
+                <tr><td>created_at / updated_at</td><td>登録・更新日時</td><td>並び替えと履歴確認</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="content-block reveal" id="implementation">
+          <p class="content-kicker">05 / Implementation</p>
+          <h2>実装方針</h2>
+          <ul class="feature-list">
+            <li><span>01</span><b>非同期での画面更新</b><p>fetchを使い、状態変更や絞り込み時にページ全体を読み直さず一覧を更新します。</p></li>
+            <li><span>02</span><b>データを先に確実に保存</b><p>外部APIより先にMySQLへ登録し、Notion連携の失敗で問い合わせが消えないようにします。</p></li>
+            <li><span>03</span><b>安全な入出力</b><p>サーバー側の入力検証、プリペアドステートメント、出力エスケープ、CSRF対策を行います。</p></li>
+            <li><span>04</span><b>認証情報をコードから分離</b><p>データベース接続情報やAPIトークンは環境変数で管理し、Gitには含めません。</p></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <section class="project-next" aria-labelledby="next-title">
+    <div class="project-next-inner">
+      <div><p>Back to Project</p><h2 id="next-title">WordPress<br />企業サイト</h2></div>
+      <a href="<?php echo esc_url(home_url('/works/wordpress-corporate/')); ?>" aria-label="WordPress企業サイトの詳細を見る">→</a>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,95 @@
+name: kigure-portfolio-wordpress
+
+services:
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${WP_DB_NAME:-wordpress}
+      MYSQL_USER: ${WP_DB_USER:-wordpress}
+      MYSQL_PASSWORD: ${WP_DB_PASSWORD:-wordpress}
+      MYSQL_ROOT_PASSWORD: ${WP_DB_ROOT_PASSWORD:-wordpress-root}
+    volumes:
+      - wordpress_db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$${MYSQL_ROOT_PASSWORD} --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  wordpress:
+    image: wordpress:php8.3-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WP_PORT:-8080}:80"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${WP_DB_NAME:-wordpress}
+      WORDPRESS_DB_USER: ${WP_DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD:-wordpress}
+      WORDPRESS_DEBUG: "1"
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_ENVIRONMENT_TYPE', 'local');
+        define('WP_DEBUG_LOG', true);
+        define('WP_DEBUG_DISPLAY', false);
+        define('DISALLOW_FILE_EDIT', true);
+      WP_MAIL_HOST: mailcatcher
+      WP_MAIL_PORT: 1025
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wordpress/wp-content/themes/kigure-portfolio:/var/www/html/wp-content/themes/kigure-portfolio
+      - ./wordpress/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
+
+  wpcli:
+    image: wordpress:cli-php8.3
+    depends_on:
+      db:
+        condition: service_healthy
+      wordpress:
+        condition: service_started
+    user: "33:33"
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${WP_DB_NAME:-wordpress}
+      WORDPRESS_DB_USER: ${WP_DB_USER:-wordpress}
+      WORDPRESS_DB_PASSWORD: ${WP_DB_PASSWORD:-wordpress}
+      WP_SITE_URL: ${WP_SITE_URL:-http://localhost:${WP_PORT:-8080}}
+      WP_SITE_TITLE: ${WP_SITE_TITLE:-H.kigure Portfolio}
+      WP_ADMIN_USER: ${WP_ADMIN_USER:-portfolio-admin}
+      WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD:-}
+      WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL:-admin@example.test}
+    volumes:
+      - wordpress_data:/var/www/html
+      - ./wordpress/wp-content/themes/kigure-portfolio:/var/www/html/wp-content/themes/kigure-portfolio
+      - ./wordpress/wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
+      - ./wordpress:/workspace:ro
+    entrypoint: ["sh", "/workspace/scripts/wpcli-entrypoint.sh"]
+    command: ["setup"]
+    profiles: ["tools"]
+
+  phpmyadmin:
+    image: phpmyadmin:5-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${PHPMYADMIN_PORT:-8081}:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: ${WP_DB_ROOT_PASSWORD:-wordpress-root}
+
+  mailcatcher:
+    image: sj26/mailcatcher:latest
+    restart: unless-stopped
+    ports:
+      - "${MAILCATCHER_WEB_PORT:-1080}:1080"
+      - "${MAILCATCHER_SMTP_PORT:-1025}:1025"
+
+volumes:
+  wordpress_data:
+  wordpress_db:

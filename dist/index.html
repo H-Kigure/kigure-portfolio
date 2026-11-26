@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="H.kigureのWeb制作・開発ポートフォリオ。WordPress、PHP、JavaScriptを中心に、実装・保守・環境構築・デプロイまで対応します。"
+    />
+    <meta name="theme-color" content="#0b1020" />
+    <title>H.kigure — WordPress / PHP Web Developer</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">本文へ移動</a>
+
+    <header class="site-header" data-header>
+      <a class="wordmark" href="#top" aria-label="H.kigure ポートフォリオ ホーム">
+        <span>HK</span><i>.</i>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="global-nav">
+        <span class="menu-label">MENU</span>
+        <span class="menu-lines" aria-hidden="true"><i></i><i></i></span>
+      </button>
+      <nav class="global-nav" id="global-nav" aria-label="メインナビゲーション">
+        <a href="#works"><span>01</span>制作物</a>
+        <a href="#services"><span>02</span>対応範囲</a>
+        <a href="#skills"><span>03</span>スキル</a>
+        <a href="#career"><span>04</span>経歴</a>
+        <a href="#contact"><span>05</span>連絡先</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-kicker reveal">
+          <span class="status-mark" aria-hidden="true"></span>
+          Web制作・開発ポートフォリオ
+        </div>
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">WordPress / PHP Web Developer</p>
+            <h1 id="hero-title">
+              作って終わらない、<br />
+              <em>運用まで見据えた</em><br />
+              Web制作。
+            </h1>
+          </div>
+          <div class="hero-intro reveal">
+            <p class="name">H.kigure <span>kigure Kigure</span></p>
+            <p>
+              WordPressサイトの制作・保守を軸に、PHP・JavaScriptを使ったWebアプリ開発まで。
+              実装、外部サービス連携、開発環境の構築、デプロイを一貫して担当できます。
+            </p>
+            <a class="text-link" href="#works">制作物を見る <span aria-hidden="true">↘</span></a>
+          </div>
+        </div>
+        <dl class="experience-strip reveal" aria-label="主な経験">
+          <div>
+            <dt>2013—</dt>
+            <dd>WordPress制作・保守</dd>
+          </div>
+          <div>
+            <dt>2020—</dt>
+            <dd>PHP / JavaScript開発</dd>
+          </div>
+          <div>
+            <dt>ONE STOP</dt>
+            <dd>環境構築からデプロイまで</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="section works" id="works" aria-labelledby="works-title">
+        <div class="section-heading reveal">
+          <p class="section-number">01 / Selected Works</p>
+          <h2 id="works-title">制作物</h2>
+          <p>実務で培った技術を、公開可能なサンプルとして再構成しています。</p>
+        </div>
+
+        <article class="work-card work-card-primary reveal">
+          <div class="work-index" aria-hidden="true">01</div>
+          <div class="work-visual corporate-mockup" aria-label="企業サイトの画面イメージ">
+            <div class="browser-bar"><i></i><i></i><i></i></div>
+            <div class="mock-nav"><b>AOBA</b><span>ABOUT&nbsp;&nbsp; SERVICE&nbsp;&nbsp; NEWS</span></div>
+            <div class="mock-hero">
+              <p>暮らしと仕事を、<br />次の景色へ。</p>
+              <span>Corporate Website</span>
+            </div>
+            <div class="mock-blocks"><i></i><i></i><i></i></div>
+          </div>
+          <div class="work-copy">
+            <div>
+              <p class="work-type">Sample Project / Corporate</p>
+              <h3>WordPress<br />企業サイト</h3>
+            </div>
+            <p>
+              中小企業を想定したオリジナルテーマのコーポレートサイト。更新しやすい管理画面設計と、運用後の保守性を重視した構成です。
+            </p>
+            <ul class="tag-list" aria-label="使用技術">
+              <li>WordPress</li><li>PHP</li><li>SCSS</li><li>JavaScript</li>
+            </ul>
+            <a class="case-link" href="./works/wordpress-corporate/">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+
+        <article class="work-card reveal">
+          <div class="work-index" aria-hidden="true">02</div>
+          <div class="work-visual app-mockup" aria-label="問い合わせ管理アプリの画面イメージ">
+            <div class="app-sidebar"><b>inbox.</b><i></i><i></i><i></i><i></i></div>
+            <div class="app-main">
+              <div class="app-top"><span>お問い合わせ</span><b>12件</b></div>
+              <div class="app-table-head"><span>送信者</span><span>種別</span><span>状態</span></div>
+              <div class="app-row"><i></i><span>山田 太郎</span><small>制作相談</small><b>未対応</b></div>
+              <div class="app-row"><i></i><span>佐藤 花子</span><small>保守依頼</small><b>対応中</b></div>
+              <div class="app-row"><i></i><span>鈴木 一郎</span><small>更新依頼</small><b>完了</b></div>
+            </div>
+          </div>
+          <div class="work-copy">
+            <div>
+              <p class="work-type">Sample Project / Web Application</p>
+              <h3>お問い合わせ<br />管理アプリ</h3>
+            </div>
+            <p>
+              フォームから受け取った情報を一覧化し、外部サービスへ連携する業務支援アプリ。非同期通信とデータベース操作を組み合わせています。
+            </p>
+            <ul class="tag-list" aria-label="使用技術">
+              <li>PHP</li><li>JavaScript</li><li>MySQL</li><li>Notion API</li>
+            </ul>
+            <a class="case-link" href="./works/inquiry-app/">詳細を見る <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+        <p class="project-note">※ いずれも実務経験をもとにした自主制作サンプルです。公開可能な情報のみを掲載しています。</p>
+      </section>
+
+      <section class="section services section-dark" id="services" aria-labelledby="services-title">
+        <div class="section-heading reveal">
+          <p class="section-number">02 / Services</p>
+          <h2 id="services-title">対応範囲</h2>
+          <p>新規制作の一部分から、公開後の運用・改善まで対応します。</p>
+        </div>
+        <ol class="service-list">
+          <li class="reveal"><span>01</span><h3>WordPress制作・改修</h3><p>オリジナルテーマ、既存テーマの改修、更新機能の実装。</p></li>
+          <li class="reveal"><span>02</span><h3>PHP / JavaScript開発</h3><p>フォーム、管理画面、API連携など小規模Webアプリの開発。</p></li>
+          <li class="reveal"><span>03</span><h3>保守・トラブル対応</h3><p>WordPress更新、表示崩れ・不具合の調査、セキュリティ設定。</p></li>
+          <li class="reveal"><span>04</span><h3>環境構築・公開</h3><p>Docker開発環境、サーバー設定、DNS・メール、デプロイ。</p></li>
+        </ol>
+      </section>
+
+      <section class="section skills" id="skills" aria-labelledby="skills-title">
+        <div class="section-heading reveal">
+          <p class="section-number">03 / Skills</p>
+          <h2 id="skills-title">スキル</h2>
+          <p>制作と開発の間をつなぎ、実務で必要なところまで手を動かします。</p>
+        </div>
+        <div class="skill-grid">
+          <article class="skill-panel reveal">
+            <p class="skill-number">A</p>
+            <h3>Frontend</h3>
+            <ul><li>HTML / CSS / SCSS</li><li>JavaScript / jQuery</li><li>fetch / Ajax</li><li>webpack</li></ul>
+          </article>
+          <article class="skill-panel reveal">
+            <p class="skill-number">B</p>
+            <h3>Backend / CMS</h3>
+            <ul><li>WordPress</li><li>PHP</li><li>MySQL</li><li>REST API / Notion API</li></ul>
+          </article>
+          <article class="skill-panel reveal">
+            <p class="skill-number">C</p>
+            <h3>Development</h3>
+            <ul><li>Docker</li><li>Git / Pull Request</li><li>Linux / Apache</li><li>Deployer</li></ul>
+          </article>
+          <article class="skill-panel reveal">
+            <p class="skill-number">D</p>
+            <h3>Design / Content</h3>
+            <ul><li>ページデザイン</li><li>Photoshop / Illustrator</li><li>Adobe XD</li><li>企画 / ライティング</li></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section career" id="career" aria-labelledby="career-title">
+        <div class="section-heading reveal">
+          <p class="section-number">04 / Career</p>
+          <h2 id="career-title">職務経歴</h2>
+        </div>
+        <div class="career-layout">
+          <p class="career-lead reveal">制作から開発へ。<br />領域をまたいで積み重ねた経験。</p>
+          <ol class="timeline">
+            <li class="reveal">
+              <time>2013—2020</time>
+              <div><h3>Web制作・WordPress</h3><p>企業・団体・サービスサイトなどのデザイン、コーディング、WordPress実装、公開後の保守を担当。</p></div>
+            </li>
+            <li class="reveal">
+              <time>2020—現在</time>
+              <div><h3>Webアプリ開発</h3><p>PHP・JavaScript・MySQLを使った開発へ領域を拡大。Docker環境構築、Git運用、レビュー、デプロイまで担当。</p></div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <div class="contact-top reveal">
+          <p class="section-number">05 / Contact</p>
+          <p>Web制作・保守・小規模開発のご相談</p>
+        </div>
+        <div class="contact-main reveal">
+          <h2 id="contact-title">まずは、お話を<br />お聞かせください。</h2>
+          <div class="contact-links">
+            <span class="contact-placeholder">メールアドレス準備中</span>
+            <span class="contact-placeholder">GitHub URL 準備中</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="wordmark wordmark-light" href="#top"><span>HK</span><i>.</i></a>
+      <p>© <span data-year></span> kigure Kigure</p>
+      <a href="#top">PAGE TOP ↑</a>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

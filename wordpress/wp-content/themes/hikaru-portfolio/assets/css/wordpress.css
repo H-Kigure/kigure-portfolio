@@ -1,0 +1,8 @@
+.admin-bar .site-header { top: 32px; }
+.wp-content-page { max-width: 760px; min-height: 70vh; margin: 0 auto; padding: 10rem var(--side) 7rem; }
+.wp-content-page h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.2; letter-spacing: -.05em; font-weight: 500; }
+.wp-content-page__body { margin-top: 3rem; color: #465166; }
+.wp-content-page__body a { color: var(--blue); text-decoration: underline; text-underline-offset: .2em; }
+.not-found-links { display: flex; gap: 1rem; margin-top: 2rem; }
+@media (max-width: 782px) { .admin-bar .site-header { top: 46px; } }
+@media (max-width: 680px) { .wp-content-page { padding-top: 8rem; } }

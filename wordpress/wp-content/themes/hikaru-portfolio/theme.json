@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1240px"
+    },
+    "color": {
+      "custom": false,
+      "palette": [
+        { "slug": "ink", "name": "Ink", "color": "#0b1020" },
+        { "slug": "blue", "name": "Blue", "color": "#2855f5" },
+        { "slug": "blue-soft", "name": "Blue Soft", "color": "#e8edff" },
+        { "slug": "paper", "name": "Paper", "color": "#f7f8fa" },
+        { "slug": "white", "name": "White", "color": "#ffffff" }
+      ]
+    },
+    "spacing": {
+      "units": ["px", "rem", "%", "vw", "vh"]
+    },
+    "typography": {
+      "fluid": true,
+      "fontFamilies": [
+        {
+          "fontFamily": "\"DM Sans\", \"Noto Sans JP\", sans-serif",
+          "name": "Portfolio Sans",
+          "slug": "portfolio-sans"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#f7f8fa",
+      "text": "#0b1020"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--portfolio-sans)",
+      "lineHeight": "1.8"
+    }
+  }
+}
